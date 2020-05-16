@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "generate:api": "openapi-generator generate -i https://gitlab.com/thevivek2/simpleconnect/-/raw/master/application/src/main/resources/api/api.yaml -g typescript-angular -o src/app/openapi --additional-properties=\"ngVersion=8.2.14\",\"fileNaming=kebab-case\""
+    "generate:api": "openapi-generator generate -i https://raw.githubusercontent.com/thevivek2/simpleconnect/master/application/src/main/resources/api/api.yaml -g typescript-angular -o src/app/openapi --additional-properties=\"ngVersion=8.2.14\",\"fileNaming=kebab-case\""
   },
   "private": true,
   "dependencies": {
