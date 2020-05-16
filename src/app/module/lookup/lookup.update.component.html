@@ -1,0 +1,58 @@
+<div class="card" style="width: 700px">
+  <div class="card-body">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <div>
+        <div class="form-group">
+          <label class="form-control-label" for="field_category">Category</label>
+          <input type="text" class="form-control" name="category" id="field_category" formControlName="category"/>
+          <div
+            *ngIf="editForm.get('category')!.invalid && (editForm.get('category')!.dirty || editForm.get('category')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('category')?.errors?.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="field_bank_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_bank_code" formControlName="code"/>
+          <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('code')?.errors?.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="field_bank_description">Description</label>
+          <textarea rows="10" class="form-control" name="description" id="field_bank_description" formControlName="description"> </textarea>
+          <div
+            *ngIf="editForm.get('description')!.invalid && (editForm.get('description')!.dirty || editForm.get('description')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('description')?.errors?.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="field_additional_info">Additional Info</label>
+          <textarea rows="5" type="text" class="form-control" name="additionalInfo" id="field_additional_info" formControlName="additionalInfo"> </textarea>
+          <div
+            *ngIf="editForm.get('additionalInfo')!.invalid && (editForm.get('additionalInfo')!.dirty || editForm.get('additionalInfo')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('additionalInfo')?.errors?.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          &nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                class="btn btn-primary">
+          &nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

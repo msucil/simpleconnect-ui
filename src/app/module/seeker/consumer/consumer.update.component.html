@@ -1,0 +1,59 @@
+<div class="card" style="width: 1300px">
+  <div class="card-body">
+    <form  name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <div>
+        <div class="form-group">
+          <label class="form-control-label" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" formControlName="name"/>
+          <div
+            *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_address">Address</label>
+          <input type="text" class="form-control" name="address" id="field_address" formControlName="address"/>
+          <div *ngIf="editForm.get('address')!.invalid && (editForm.get('address')!.dirty || editForm.get('address')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('address')?.errors?.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_reference">Reference</label>
+          <input type="text" class="form-control" name="reference" id="field_reference" formControlName="reference"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-control-label" for="field_provides">Consumes</label>
+        <ag-grid-angular id="field_provides"
+                         style="width: 1200px"
+                         class="ag-theme-balham"
+                         [rowData]="rowData"
+                         [gridOptions]="gridOptions"
+                         [defaultColDef]="defaultColDef"
+                         [columnDefs]="columnDefs"
+                         [rowSelection]="rowSelection"
+                         [suppressRowClickSelection]="true"
+                         (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          &nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                class="btn btn-primary">
+          &nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+

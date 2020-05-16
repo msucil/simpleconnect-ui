@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-header">
+    <h2 id="page-heading">
+      <button id="jh-create-entity" class="btn btn-primary float-right"
+              [routerLink]="['/lookup/new']">
+        <span>
+            New Interest
+            </span>
+      </button>
+    </h2>
+  </div>
+
+  <div class="card-body">
+    <ag-grid-angular
+      style="width: 1200px"
+      class="ag-theme-balham"
+      [rowData]="rowData"
+      [gridOptions]="gridOptions"
+      [defaultColDef]="defaultColDef"
+      [overlayLoadingTemplate]="loadingTemplate"
+      [overlayNoRowsTemplate]="noRowsTemplate"
+      (gridReady)="onGridReady($event)">
+    </ag-grid-angular>
+  </div>
+</div>
